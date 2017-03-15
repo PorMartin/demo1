@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{margin: 0;padding: 0;}
+	
+	.box{
+		width: 600px;
+		height: 600px;
+		background: url(image/clock.jpg) no-repeat;
+		margin: 100px auto;
+		position:relative;
+	}
+
+	span{
+				position: absolute;
+		display: block;
+		width: 600px;
+		height: 600px;
+
+	}
+	span#hour{
+		background:url(image/hour.png) no-repeat center center;
+	}
+	span#minute{
+	
+		background:url(image/minute.png) no-repeat center center;
+
+	}
+	span#second{
+
+		background:url(image/second.png) no-repeat center center;
+	}
+</style>
+<body>
+	<div id='clock' class="box">
+		
+			<span id='hour'></span>
+			<span id='minute'></span>
+			<span id='second'></span>
+	</div>
+</body>
+</html>
+<script>
+	function $(id){return document.getElementById(id)};
+		var h=0,m=0,s=0,ms=0;
+
+	setInterval(function(){
+			var date = new Date();
+		ms = date.getMilliseconds();
+		s = date.getSeconds();
+		m = date.getMinutes() + s /60;
+		h = date.getHours() % 12 + m /60;
+
+
+		$('second').style.MozTransform = 'rotate('+ s*6 +'deg)';
+		$('minute').style.MozTransform = 'rotate('+ m*6 +'deg)';
+		$('hour').style.MozTransform = 'rotate('+ h*30 +'deg)';
+	},1000)
+	
+	
+
+
+</script>
